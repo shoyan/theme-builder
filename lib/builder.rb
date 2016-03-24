@@ -2,7 +2,7 @@ require 'securerandom'
 require 'date'
 require 'jekyll'
 require './lib/compressor'
-require './lib/remover'
+require './lib/cleaner'
 require './lib/configer'
 require './lib/build_configuration'
 
@@ -18,7 +18,7 @@ class Builder
           destination: destination,
           config: path)
     Compressor.run(archived_file_name, destination)
-    Remover.run(destination)
+    Cleaner.run(destination)
     "#{Builder.download_dir}#{archived_file_name}"
   end
 

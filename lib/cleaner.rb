@@ -1,6 +1,6 @@
 require 'fileutils'
 
-class Remover
+class Cleaner
   def self.run(path)
     FileUtils.rm_rf(path)
   end
