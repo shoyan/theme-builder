@@ -20,12 +20,13 @@ module Configer
     self.permalink = '/:title'
   end
 
-  def build_config_file(path='_config.yml')
+  def build_config_file(path='./tmp/_config.yml')
     option = VALID_OPTION_KEYS.each_with_object({}) do |key, arr|
       arr[key] = send(key)
     end
     File.open(path, "w") do |f|
       f.puts option.to_yaml
     end
+    path
   end
 end

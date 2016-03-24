@@ -7,7 +7,8 @@ get '/' do
 end
 
 post '/build' do
-  Builder.run
+  path = Builder.build_config_file
+  Builder.run(config: path)
 end
 
 post '/test' do

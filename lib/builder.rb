@@ -8,11 +8,11 @@ require './lib/configer'
 class Builder
   extend Configer
 
-  def run(args)
+  def run(option)
     file_name = build_file_name
     sub_dir   = build_sub_dir
     Dir.mkdir "public/sites/#{sub_dir}" unless Dir.exist?("public/sites/#{sub_dir}")
-    build(source: "themes/default", destination: "public/sites/#{sub_dir}/#{file_name}")
+    build(source: "themes/default", destination: "public/sites/#{sub_dir}/#{file_name}", config: option[:config])
     Compressor.run("public/sites/#{sub_dir}/#{file_name}.tar.gz", "public/sites/#{sub_dir}/#{file_name}")
     Remover.run("public/sites/#{sub_dir}/#{file_name}")
     "/downloads/#{sub_dir}/#{file_name}.tar.gz"
@@ -31,8 +31,8 @@ class Builder
   end
 
   class << self
-    def run(*args)
-      new.run(args)
+    def run(option)
+      new.run(option)
     end
   end
 end
