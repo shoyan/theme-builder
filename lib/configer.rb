@@ -1,7 +1,5 @@
-require 'yaml'
-
 module Configer
-  VALID_OPTION_KEYS = %w(title email baseurl url permalink)
+  VALID_OPTION_KEYS = %w(build_dir config_dir)
   attr_accessor(*VALID_OPTION_KEYS)
 
   def self.extended(base)
@@ -13,21 +11,7 @@ module Configer
   end
 
   def reset
-    self.title = 'Your site title'
-    self.email = 'your-email@domain.com'
-    self.baseurl = ''
-    self.url = "http://yourdomain.com"
-    self.permalink = '/:title'
-  end
-
-  def build_config_file(option = {}, path='./tmp/_config.yml')
-    config = VALID_OPTION_KEYS.each_with_object({}) do |key, arr|
-      send("#{key}=", option[key]) if option.key?(key)
-      arr[key] = send(key)
-    end
-    File.open(path, "w") do |f|
-      f.puts config.to_yaml
-    end
-    path
+    self.build_dir = 'public/sites/'
+    self.config_dir = 'tmp/'
   end
 end
