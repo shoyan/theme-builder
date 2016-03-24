@@ -12,7 +12,9 @@ class Builder
     file_name = build_file_name
     sub_dir   = build_sub_dir
     Dir.mkdir "public/sites/#{sub_dir}" unless Dir.exist?("public/sites/#{sub_dir}")
-    build(source: "themes/default", destination: "public/sites/#{sub_dir}/#{file_name}", config: option[:config])
+
+    path = Builder.build_config_file(option[:config], "./tmp/_config_#{file_name}.yml")
+    build(source: "themes/default", destination: "public/sites/#{sub_dir}/#{file_name}", config: path)
     Compressor.run("public/sites/#{sub_dir}/#{file_name}.tar.gz", "public/sites/#{sub_dir}/#{file_name}")
     Remover.run("public/sites/#{sub_dir}/#{file_name}")
     "/downloads/#{sub_dir}/#{file_name}.tar.gz"
