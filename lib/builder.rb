@@ -11,24 +11,35 @@ class Builder
 
   def run(option)
     Dir.mkdir build_dir unless Dir.exist?(build_dir)
-
-    path = BuildConfiguration.build_config_file(option[:config], "./tmp/_config_#{file_name}.yml")
-    build(source: "themes/default", destination: "#{build_dir}/#{file_name}", config: path)
-    Compressor.run("#{build_dir}/#{file_name}.tar.gz", "#{build_dir}/#{file_name}")
-    Remover.run("#{build_dir}/#{file_name}")
-    "/downloads/#{build_dir}/#{file_name}.tar.gz"
+    path = BuildConfiguration.build_config_file(
+      option[:config],
+      "#{Builder.config_dir}_config_#{unique_name}.yml")
+    build(source: Builder.theme,
+          destination: destination,
+          config: path)
+    Compressor.run(archived_file_name, destination)
+    Remover.run(destination)
+    "#{Builder.download_dir}#{archived_file_name}"
   end
 
   def build(args)
     Jekyll::Commands::Build.process(args)
   end
 
-  def file_name
-    @file_name || @file_name = SecureRandom.hex
+  def unique_name
+    @unique_name || @unique_name = SecureRandom.hex
   end
 
   def build_dir
-    @build_dir || @build_dir = "#{Builder.build_dir}#{Date.today.to_s}"
+    @build_dir || @build_dir = "#{Builder.build_dir}#{Date.today.to_s}/"
+  end
+
+  def destination
+    "#{build_dir}#{unique_name}"
+  end
+
+  def archived_file_name
+    "#{destination}.tar.gz"
   end
 
   class << self
