@@ -1,0 +1,15 @@
+version: '2'
+services:
+  api:
+    build: .
+    command: ruby api.rb
+    volumes:
+      - .:/site-generator
+    ports:
+      - "4567:4567"
+  web:
+    image: httpd:2.4
+    volumes:
+      - ./public-html:/usr/local/apache2/htdocs
+    ports:
+      - "80:80"
