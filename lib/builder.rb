@@ -20,8 +20,8 @@ class Builder
           config: path)
 
     Compressor.run(archived_file_name, destination)
-    Cleaner.run(destination) if Builder.clean
     FileUtils.cp_r "#{destination}/.", Builder.delivery_dir if Builder.delivery_dir
+    Cleaner.run(destination, path) if Builder.clean
     "#{Builder.download_dir}#{archived_file_name}"
   end
 
