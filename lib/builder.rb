@@ -14,11 +14,14 @@ class Builder
     path = BuildConfiguration.build_config_file(
       option[:config],
       "#{Builder.config_dir}_config_#{unique_name}.yml")
+
     build(source: Builder.theme,
           destination: destination,
           config: path)
+
     Compressor.run(archived_file_name, destination)
-    Cleaner.run(destination)
+    Cleaner.run(destination) if Builder.clean
+    FileUtils.cp_r "#{destination}/.", Builder.delivery_dir if Builder.delivery_dir
     "#{Builder.download_dir}#{archived_file_name}"
   end
 

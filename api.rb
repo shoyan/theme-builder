@@ -3,6 +3,10 @@ require './lib/builder'
 
 set :bind, '0.0.0.0'
 
+Builder.configure do |c|
+  c.delivery_dir = 'public-html'
+end
+
 get '/' do
   'Hello world!'
 end
