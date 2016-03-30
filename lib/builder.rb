@@ -15,9 +15,7 @@ class Builder
       option[:config],
       "#{Builder.config_dir}_config_#{unique_name}.yml")
 
-    build(source: Builder.theme,
-          destination: destination,
-          config: path)
+    build(destination: destination, config: path)
 
     Compressor.run(archived_file_name, destination)
     FileUtils.cp_r "#{destination}/.", Builder.delivery_dir if Builder.delivery_dir

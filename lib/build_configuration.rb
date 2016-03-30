@@ -6,7 +6,8 @@ class BuildConfiguration
     'email'   => 'your-email@domain.com',
     'baseurl' => '',
     'url'     => 'http://yourdomain.com',
-    'permalink' => '/:title'
+    'permalink' => '/:title',
+    'source' => 'themes/default'
   }
 
   class << self
