@@ -1,8 +1,7 @@
 version: '2'
 services:
   api:
-    build:
-      context: ./dockerfile/api
+    build: .
     command: ruby api.rb
     volumes:
       - .:/site-generator
@@ -10,7 +9,7 @@ services:
       - "4567:4567"
   web:
     build:
-      context: ./dockerfile/web
+      context: ./docker/web
     volumes:
       - ./public-html:/usr/local/apache2/htdocs
     ports:
