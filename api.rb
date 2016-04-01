@@ -14,6 +14,7 @@ end
 
 post '/build' do
   Builder.run(config: params)
+  redirect request.base_url.gsub(/:[0-9]+/, '')
 end
 
 get '/download/:filename' do |filename|
