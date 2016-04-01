@@ -1,18 +1,72 @@
-<form action="/build" method="post">
-  <ul>
-    <li>title: <input type="text" name="title"></li>
-    <li>email: <input type="text" name="email"></li>
-    <li>url: <input type="text" name="url"></li>
-    <li>theme:
-      <select name="source">
-        <option value="themes/default">plain</option>
-        <option value="themes/starter-template">starter-template</option>
-        <option value="themes/jumbotron">jumbotron</option>
-        <option value="themes/cover">cover</option>
-        <option value="themes/carousel">carousel</option>
-        <option value="themes/blog">blog</option>
-      </select>
-    </li>
-  </ul>
-  <input type="submit">
-</form>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Site Generator</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <style>
+      body {
+        padding-top: 40px;
+        padding-bottom: 40px;
+        background-color: #eee;
+      }
+      .form {
+        max-width: 330px;
+        padding: 15px;
+        margin: 0 auto;
+      }
+      .form .form-heading,
+      .form .checkbox {
+        margin-bottom: 10px;
+      }
+      .form .checkbox {
+        font-weight: normal;
+      }
+      .form .form-control {
+        position: relative;
+        height: auto;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        padding: 10px;
+        font-size: 16px;
+        margin: 10px 0;
+      }
+      .form .select {
+        height: 44px;
+      }
+      .form button {
+        margin-top: 30px;
+      }
+      .form .form-control:focus {
+        z-index: 2;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <form class="form" action="/build" method="post">
+        <h2 class="form-heading">Site Configuration</h2>
+        <input type="title" class="form-control" placeholder="Title" autofocus>
+        <input type="email" class="form-control" placeholder="Email address">
+        <input type="url" class="form-control" placeholder="URL">
+        <label for="inputSource">Theme</label>
+        <select id="inputSource" class="form-control select" name="source">
+          <option value="themes/default">plain</option>
+          <option value="themes/starter-template">starter-template</option>
+          <option value="themes/jumbotron">jumbotron</option>
+          <option value="themes/cover">cover</option>
+          <option value="themes/carousel">carousel</option>
+          <option value="themes/blog">blog</option>
+        </select>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">作成</button>
+      </form>
+    </div>
+  </body>
+</html>
