@@ -1,5 +1,5 @@
 # site-generator
-This is prototype site generator api.
+This is prototype site generator.
 
 ## Getting Started
 Dockerを使って簡単に開発環境を作れます。  
@@ -24,7 +24,7 @@ $ docker-machine  ip
 表示されたIPにブラウザでアクセスしてHello world!と表示されれば成功です。  
 
 ### サイトを作成する
-https://192.168.99.100:4567/build にアクセスします。  
+http://192.168.99.100:4567/build にアクセスします。  
 フォームに設定項目を入力して作成ボタンを押してください。  
 作成されたサイトが表示されます。  
 ファイルは`public-html`配下に作成されます。
