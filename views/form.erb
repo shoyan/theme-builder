@@ -15,10 +15,8 @@
         padding-bottom: 40px;
         background-color: #eee;
       }
-      .form {
+      .form .config {
         max-width: 330px;
-        padding: 15px;
-        margin: 0 auto;
       }
       .form .form-heading,
       .form .checkbox {
@@ -46,26 +44,117 @@
       .form .form-control:focus {
         z-index: 2;
       }
+      .center div {
+        text-align: center;
+      }
+      .theme_container {
+        margin: 10px;
+        padding: 15px;
+      }
+      .theme_thumbnail {
+        width: 252px;
+        height: 189px;
+      }
+      .theme_thumbnail img {
+        padding: 4px;
+        background-color: #fff;
+        width: 100%;
+        height: 100%;
+        border:1px solid #ddd;
+        border-radius: 4px;
+      }
+      .theme_thumbnail img:hover {
+        border:1px solid #3399FF;
+      }
+      .theme_text {
+        margin: 5px;
+        width: 100%;
+      }
+      .theme_text label {
+        font-size: 24px;
+      }
     </style>
   </head>
 
   <body>
     <div class="container">
       <form class="form" action="/build" method="post">
-        <h2 class="form-heading">Site Configuration</h2>
-        <input name="title" class="form-control" placeholder="Title" autofocus>
-        <input name="email" class="form-control" placeholder="Email address">
-        <input name="url" class="form-control" placeholder="URL">
-        <label for="inputSource">Theme</label>
-        <select id="inputSource" class="form-control select" name="source">
-          <option value="themes/default">plain</option>
-          <option value="themes/starter-template">starter-template</option>
-          <option value="themes/jumbotron">jumbotron</option>
-          <option value="themes/cover">cover</option>
-          <option value="themes/carousel">carousel</option>
-          <option value="themes/blog">blog</option>
-        </select>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">作成</button>
+        <div class="config">
+          <h2 class="form-heading">Site Configuration</h2>
+          <input name="title" class="form-control" placeholder="Title" autofocus>
+          <input name="email" class="form-control" placeholder="Email address">
+          <input name="url" class="form-control" placeholder="URL">
+
+          <h2 class="form-heading">Theme</h2>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-3">
+            <div class="theme_container">
+              <div class="theme_thumbnail">
+                <a href="http://getbootstrap.com/examples/starter-template/" target="_blank"><img src="http://getbootstrap.com/examples/screenshots/starter-template.jpg" alt=""></a>
+              </div>
+              <div class="theme_text">
+                <input type="radio" name="source" value="themes/starter-template" id="t2" checked> <label for="t2">Starter-template</label>
+                <p>Nothing but the basics: compiled CSS and JavaScript alog with a container.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3">
+            <div class="theme_container">
+              <div class="theme_thumbnail">
+                <a href="http://getbootstrap.com/examples/jumbotron/" target="_blank"><img src="http://getbootstrap.com/examples/screenshots/jumbotron.jpg" alt=""></a>
+              </div>
+              <div class="theme_text">
+                <input type="radio" name="source" value="themes/jumbotron" id="t3"> <label for="t3">Jumbotron</label>
+                <p>Build around the jumbortron with a navbar and some basic grid columns.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3">
+            <div class="theme_container">
+              <div class="theme_thumbnail">
+                <a href="http://getbootstrap.com/examples/cover/" target="_blank"><img src="http://getbootstrap.com/examples/screenshots/cover.jpg" alt=""></a>
+              </div>
+              <div class="theme_text">
+                <input type="radio" name="source" value="themes/cover" id="t4"> <label for="t4">Cover</label>
+                <p>A one-page template for building simple and beautiful home pages.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3">
+            <div class="theme_container">
+              <div class="theme_thumbnail">
+                <a href="http://getbootstrap.com/examples/carousel/" target="_blank"><img src="http://getbootstrap.com/examples/screenshots/carousel.jpg" alt=""></a>
+              </div>
+              <div class="theme_text">
+                <input type="radio" name="source" value="themes/carousel" id="t5" > <label for="t5">Carousel</label>
+                <p>Customize the navbar and carousel, then add some new components.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-3">
+            <div class="theme_container">
+              <div class="theme_thumbnail">
+                <a href="http://getbootstrap.com/examples/blog/" target="_blank"><img src="http://getbootstrap.com/examples/screenshots/blog.jpg" alt=""></a>
+              </div>
+              <div class="theme_text">
+                <input type="radio" name="source" value="themes/blog" id="t6"> <label for="t6">Blog</label>
+                <p>Simple two-column blog layout with custom navigation, header, and type.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="config">
+          <button class="btn btn-lg btn-primary btn-block" type="submit">作成</button>
+        </div>
       </form>
     </div>
   </body>
