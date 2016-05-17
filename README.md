@@ -11,8 +11,8 @@ https://www.docker.com/products/docker-toolbox
 
 以下の手順でDockerコンテナを起動します。
 ```
-$ git clone git@git.pepabo.com:shoyan/site-generator.git
-$ cd site-generator
+$ git clone git@github.com:shoyan/theme-builder.git
+$ cd theme-builder
 
 # dockerコンテナを起動する
 $ docker-compose up -d
