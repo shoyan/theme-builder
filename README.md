@@ -1,5 +1,5 @@
-# site-generator
-This is prototype site generator.
+# theme-builder
+This is prototype of theme builder. Building a template of bootstrap easy.
 
 ## Getting Started
 Dockerを使って簡単に開発環境を作れます。  
